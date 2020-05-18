@@ -53,6 +53,19 @@ public class SingleLinkedList<T> {
 				System.out.print("-->");
 		}
 	}
+	
+	public void reverseList(){
+		Node<T> prev = null;
+		Node<T> current = head;
+		Node<T> next = null;
+		while(current!=null){
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		head = prev;
+	}
 
 	public static void main(String[] args) {
 		SingleLinkedList<String> strList = new SingleLinkedList<>();
@@ -63,12 +76,18 @@ public class SingleLinkedList<T> {
 		
 		strList.printList();
 		System.out.println("");
+		strList.reverseList();
+		strList.printList();
+		System.out.println("");
 		SingleLinkedList<Integer> intgrList = new SingleLinkedList<>();
 		intgrList.append(10);
 		intgrList.append(20);
 		intgrList.append(30);
 		intgrList.append(40);
 		
+		intgrList.printList();
+		System.out.println("");
+		intgrList.reverseList();
 		intgrList.printList();
 
 	}
